@@ -1,12 +1,8 @@
 <#
 .Synopsis
     Backup script utilising wbadmin to remotely backup Windows 10 systems.
-.DESCRIPTION
-    Long description
-.EXAMPLE
-    Example of how to use this cmdlet
-.EXAMPLE
-    Another example of how to use this cmdlet
+.DESCRIPTION AND NOTES
+    "Enable-PSRemoting -Force" needs to be run on the PC's to be backed up before this script can be run.
 #>
 
 #Script Name: RemoteBackup
