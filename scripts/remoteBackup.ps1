@@ -1,6 +1,6 @@
 <#
 .Synopsis
-    Short description
+    Backup script utilising wbadmin to remotely backup Windows 10 systems.
 .DESCRIPTION
     Long description
 .EXAMPLE
