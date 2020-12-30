@@ -9,30 +9,20 @@
     Another example of how to use this cmdlet
 #>
 
-#Script Name
-#Creator
-#Date
-#Updated
-#References, if any
+#Script Name: RemoteBackup
+#Creator: Matt Jones
+#Date: 30/12/2020
+#Updated: N/A
+#References, if any: N/A
 
 #Variables
 $Credential = Get-Credential
+$Computers = "PC155", "PC1000"
 
-#Parameters
-[CmdletBinding()]
-param (
-    [Parameter(Mandatory=$true)]
-    [string[]]
-    $ComputerNames
-)
-#Enter Tasks Below as Remarks
+Write-Output "Starting remote connections to " $Computers
 
-#WBAdmin backup script for running on remote PCs and replacing the previous backup taken on the date seven days previous.
-
-#test Write-Output $ComputerNames
-
-foreach ($ComputerNames in $ComputerNames) {
-    Invoke-Command -ScriptBlock {
-        wbadmin.exe start backup -backupTarget\\pc188\ -include:C: -allCritical -quiet #Create a variable for the backup location to alter it for each computer name
+foreach ($Computer in $Computers) {
+    Invoke-Command -ComputerName $Computer -Credential $Credential -ScriptBlock {
+        wbadmin.exe start backup -backupTarget\\pc188\ -include:C: -allCritical -quiet -user:$Credential.UserName -password:$Credential.Password
     }
 }
